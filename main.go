@@ -60,13 +60,20 @@ func WithInterface(w io.Writer) {
 func SliceDynamic() {
 	data := make([]int, 0)
 	for i := 0; i < 1000; i++ {
-		data = append(data, i)
+		data = append(data, i) // 2328 ns/op 25208 B/op 12 allocs/op
+	}
+}
+
+func SliceWithSize() {
+	data := make([]int, 0, 1000)
+	for i := 0; i < 1000; i++ {
+		data = append(data, i) // 498.3 ns/op 0 B/op 0 allocs/op
 	}
 }
 
 func SliceWithCap() {
 	data := make([]int, 1000, 1000)
 	for i := 0; i < 1000; i++ {
-		data[i] = i
+		data[i] = i // 322.9 ns/op 0 B/op 0 allocs/op
 	}
 }

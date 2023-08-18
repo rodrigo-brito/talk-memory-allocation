@@ -57,6 +57,13 @@ func BenchmarkSliceDynamic(b *testing.B) {
 	b.ReportAllocs()
 }
 
+func BenchmarkSliceWithSize(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		SliceWithSize()
+	}
+	b.ReportAllocs()
+}
+
 func BenchmarkSliceCapacity(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		SliceWithCap()
