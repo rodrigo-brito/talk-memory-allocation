@@ -19,3 +19,5 @@
 
 # Go workspace file
 go.work
+talk-memory-allocation
+pointer_trace.out
