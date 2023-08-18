@@ -8,6 +8,23 @@ Discussion about memory allocation in Go (Stack / Heap)
 - `make benchmark ` - run benchmark
 - `make benchmark-view` - run benchmark and view trace result
 
+
+## Build Alloc
+
+```
+go build -gcflags '-m -l'
+# github.com/rodrigo-brito/talk-memory-allocation
+./main.go:29:2: moved to heap: y
+./main.go:50:27: x does not escape
+./main.go:47:9: &Float{...} escapes to heap
+./main.go:55:20: leaking param: w
+./main.go:57:12: ... argument does not escape
+./main.go:57:16: x escapes to heap
+./main.go:61:14: make([]int, 0) does not escape
+./main.go:68:14: make([]int, 1000, 1000) does not escape
+./main.go:15:16: &bytes.Buffer{} escapes to heap
+```
+
 ## Results
 ```
 BenchmarkNoAlloc-8                      1000000000               0.3188 ns/op          0 B/op          0 allocs/op
